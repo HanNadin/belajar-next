@@ -1,21 +1,24 @@
 import Head from "next/head";
-import Navbar from "./components/Navbar";
+import Navbar from "../components/Navbar";
 import Image from "next/image";
+import Link from "next/link";
 
-const about = ({data}) => {
+const about = ({ data }) => {
     return (
         <>
             <Head>
                 <title>About  |  Belajar Next JS</title>
                 <meta name="description" content="Belajar Next JS" />
             </Head>
-            <Navbar />
-            <Image src="/vercel.svg" alt="Logo Vercel" width={400} height={200}></Image>
-            <h1>Ini halaman About</h1>
-            {data.map((item) => (
-                <div key={item.id}>
-                    <h2>{item.name}</h2>
-                </div>
+                <Navbar />
+                <Image src="/vercel.svg" alt="Logo Vercel" width={400} height={200}></Image>
+                <h1>Ini halaman About</h1>
+                {data.map((item) => (
+                    <div key={item.id}>
+                        <Link href={`/about/${item.id}`}>
+                            <h2>{item.name}</h2>
+                        </Link>
+                    </div>
             ))}
         </>
     );
